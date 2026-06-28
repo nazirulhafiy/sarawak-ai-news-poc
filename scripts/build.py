@@ -47,7 +47,6 @@ def render_index(items: list[dict], sources: list[dict]) -> str:
     section_counts = Counter(item["section"] for item in items)
     tag_counts = Counter(tag for item in items for tag in item.get("tags", []))
     generated = datetime.now().strftime("%A, %B %-d, %Y — Updated %-I:%M %p")
-    lead = items[0]
 
     sections = []
     for section in SECTION_ORDER:
@@ -91,9 +90,10 @@ def render_index(items: list[dict], sources: list[dict]) -> str:
     <p class="edition">Sarawak signal brief</p>
 
     <header class="lede">
-      <h1>{esc(lead['title'])}</h1>
-      <p>{esc(lead['summary'])}</p>
-      <p>{esc(lead['why_it_matters'])}</p>
+      <h1>Sarawak’s AI Stack Is Becoming Visible</h1>
+      <p>This is no longer just digital-economy branding.</p>
+      <p>Sarawak’s AI story is starting to resolve into institutions, infrastructure, public services, talent, and applied sector projects.</p>
+      <p>The open question is whether the signal is weekly enough to justify a standing brief.</p>
     </header>
 
     <section class="story-section">
