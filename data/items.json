@@ -1,54 +1,275 @@
 [
   {
-    "id": "the-edge-sarawak-adopts-ai-2026-04",
-    "date": "2026-04-13",
-    "source": "The Edge Malaysia",
-    "url": "https://theedgemalaysia.com/node/799399",
-    "title": "Digital State: Sarawak adopts AI to address citizen needs",
-    "section": "Government & Policy",
-    "tags": ["SAIC", "Dayang", "public-sector AI", "SDEB 2030"],
-    "summary": "Sarawak is moving from digitalisation into early AI adoption across public services, with Dayang as a citizen-facing AI assistant and SAIC coordinating policy and adoption. The article frames AI as a way to improve services, productivity, inclusion, and data-driven governance while noting readiness gaps.",
-    "why_it_matters": "This is the strongest baseline context item for the brief: it explains the institutions, policy frame, and adoption barriers behind Sarawak's AI push.",
-    "confidence": "high",
-    "caveat": "Use as background analysis; verify article date/access before quoting."
-  },
-  {
-    "id": "dayakdaily-quantum-ai-cambridge-2026-05",
-    "date": "2026-05-18",
-    "source": "DayakDaily",
-    "url": "https://dayakdaily.com/sarawak-establishing-quantum-ai-research-economics-collaboration-with-cambridge-university-uk",
-    "title": "Sarawak establishing Quantum AI research, economics collaboration with Cambridge University, UK",
-    "section": "Research & Universities",
-    "tags": ["Quantum AI", "Cambridge", "Sarawak Cloud", "Sovereign AI", "AI Grid", "SAIC"],
-    "summary": "Sarawak is positioning AI as a strategic capability through research collaboration, sovereign infrastructure, and applied AI projects across government-linked institutions. The report cites Sarawak Cloud, a sovereign AI platform, AI Grid work with SAINS, and sector applications in biodiversity, forestry, agriculture, energy, and finance.",
-    "why_it_matters": "This moves Sarawak AI from generic adoption talk into a concrete institutional roadmap: research partnerships plus local AI infrastructure plus applied projects.",
-    "confidence": "high",
-    "caveat": "Official-speech context; follow-up sources should check implementation progress."
-  },
-  {
     "id": "sarawaktribune-ai-productivity-2026-06",
     "date": "2026-06-28",
     "source": "Sarawak Tribune",
     "url": "https://www.sarawaktribune.com/ai-to-transform-sarawaks-economy-services-workforce-productivity",
     "title": "AI to transform Sarawak's economy, services, workforce productivity",
     "section": "Education & Workforce",
-    "tags": ["DeepSAR", "workforce productivity", "public services", "SwinTalk"],
+    "tags": [
+      "DeepSAR",
+      "workforce productivity",
+      "public services",
+      "SwinTalk"
+    ],
     "summary": "Professor Patrick Then of the Sarawak AI Centre frames AI as a productivity multiplier for public services, business operations, and administrative workflows. The article uses DeepSAR and SKAS eligibility/form-filling as examples while flagging digital divide and implementation-readiness concerns.",
     "why_it_matters": "This provides the public-facing adoption story: AI as service acceleration and workforce capacity expansion, not just infrastructure strategy.",
     "confidence": "high",
     "caveat": "Extractor summary was truncated; revisit source before direct quotation."
   },
   {
-    "id": "sdec-news-watch-2026-06",
-    "date": "2026-06-10",
-    "source": "SDEC",
-    "url": "https://sdec.com.my/web/sdecnews",
-    "title": "SDEC News listing shows AI, deep-tech, IoT and startup pipeline items",
-    "section": "Business & Startups",
-    "tags": ["SDEC", "deep-tech", "IoT", "startups", "demo day"],
-    "summary": "SDEC's news listing includes recurring digital-economy programme announcements, including a TFI demo day with AI, cybersecurity and IoT teams, startup showcases, and digital entrepreneurship programmes. This makes SDEC a core recurring source for the watchlist.",
-    "why_it_matters": "A recurring official source is needed for a sustainable brief; SDEC appears to be one of the highest-yield institutional feeds.",
-    "confidence": "medium",
-    "caveat": "Listing page only; individual articles need extraction before inclusion in a published brief."
+    "id": "dayakdaily-munich-ai-2026-06-24",
+    "date": "2026-06-24",
+    "source": "DayakDaily",
+    "url": "https://dayakdaily.com/sarawak-links-up-with-munich-to-accelerate-ai-integration-in-public-services-smart-cities",
+    "title": "Sarawak links up with Munich to accelerate AI integration in public services, smart cities",
+    "section": "Government & Policy",
+    "tags": [
+      "Munich",
+      "smart city",
+      "public services",
+      "AI integration"
+    ],
+    "summary": "Sarawak is strengthening its digital transformation agenda through a strategic partnership with Munich, focusing on AI in public institutions, local government, and smart city solutions aimed at better service delivery and administrative efficiency.",
+    "why_it_matters": "This is a concrete AI policy/adoption signal: Sarawak is looking abroad for operating models, not just branding AI as a future ambition.",
+    "confidence": "high",
+    "caveat": "Dated through article publication reference in the source snippet."
+  },
+  {
+    "id": "borneopost-youth-ai-robotics-smart-farming-2026-06-13",
+    "date": "2026-06-13",
+    "source": "The Borneo Post",
+    "url": "https://www.theborneopost.com/2026/06/13/sarawak-bets-on-youth-to-drive-ai-robotics-and-smart-farming-under-pcds-2030-video",
+    "title": "Sarawak bets on youth to drive AI, robotics and smart farming under PCDS 2030",
+    "section": "Education & Workforce",
+    "tags": [
+      "youth",
+      "robotics",
+      "smart farming",
+      "PCDS 2030",
+      "AI talent"
+    ],
+    "summary": "Sarawak is tying AI, robotics and smart farming to its youth development and PCDS 2030 agenda, framing younger Sarawakians as the implementation layer for advanced technologies.",
+    "why_it_matters": "This adds the talent and adoption angle: Sarawak’s AI strategy depends on whether young workers and communities can actually use the tools being promoted.",
+    "confidence": "high",
+    "caveat": "Search result provides date and title; revisit source before direct quotation."
+  },
+  {
+    "id": "sarawaktribune-sovereign-ai-2026-05-20",
+    "date": "2026-05-20",
+    "source": "Sarawak Tribune",
+    "url": "https://www.sarawaktribune.com/sarawak-eyes-sovereign-ai-infrastructure",
+    "title": "Sarawak Eyes Sovereign AI Infrastructure",
+    "section": "Infrastructure",
+    "tags": [
+      "sovereign AI",
+      "data centre",
+      "Kuching AI Data Campus",
+      "AI grid"
+    ],
+    "summary": "Sarawak is targeting sovereign AI infrastructure to strengthen its position as a digital economy hub, including plans for the Kuching AI Data Campus and AI Grid ecosystem support.",
+    "why_it_matters": "This is one of the clearest infrastructure anchors for the AI story: it ties AI ambition to compute, campus planning, and state-level digital capacity.",
+    "confidence": "high",
+    "caveat": "Publication date inferred from source snippet context (May 20)."
+  },
+  {
+    "id": "dayakdaily-ai-grid-satellite-2026-05-20",
+    "date": "2026-05-20",
+    "source": "DayakDaily",
+    "url": "https://dayakdaily.com/sarawak-explores-ai-grid-networks-satellite-integration-to-power-next-generation-digital-economy",
+    "title": "Sarawak explores AI Grid networks, satellite integration to power next-generation digital economy",
+    "section": "Infrastructure",
+    "tags": [
+      "AI Grid",
+      "satellite",
+      "digital economy",
+      "2030 roadmap"
+    ],
+    "summary": "Sarawak is exploring AI Grid networks and satellite-enabled capabilities as part of its broader digital-economy and AI roadmap toward 2030.",
+    "why_it_matters": "This connects AI to the state’s infrastructure layer, showing that the story is not just software but also networks, compute, and connectivity.",
+    "confidence": "high",
+    "caveat": "Publication date inferred from source snippet context (May 20)."
+  },
+  {
+    "id": "dayakdaily-quantum-ai-cambridge-2026-05-18",
+    "date": "2026-05-18",
+    "source": "DayakDaily",
+    "url": "https://dayakdaily.com/sarawak-establishing-quantum-ai-research-economics-collaboration-with-cambridge-university-uk",
+    "title": "Sarawak establishing Quantum AI research, economics collaboration with Cambridge University, UK",
+    "section": "Research & Universities",
+    "tags": [
+      "Quantum AI",
+      "Cambridge",
+      "Sarawak Cloud",
+      "Sovereign AI",
+      "AI Grid",
+      "SAIC"
+    ],
+    "summary": "Sarawak is positioning AI as a strategic capability through research collaboration, sovereign infrastructure, and applied AI projects across government-linked institutions. The report cites Sarawak Cloud, a sovereign AI platform, AI Grid work with SAINS, and sector applications in biodiversity, forestry, agriculture, energy, and finance.",
+    "why_it_matters": "This moves Sarawak AI from generic adoption talk into a concrete institutional roadmap: research partnerships plus local AI infrastructure plus applied projects.",
+    "confidence": "high",
+    "caveat": "Official-speech context; follow-up sources should check implementation progress."
+  },
+  {
+    "id": "borneopost-bristol-collaboration-2026-05-06",
+    "date": "2026-05-06",
+    "source": "The Borneo Post",
+    "url": "https://www.theborneopost.com/2026/05/06/sarawak-targets-regional-ai-hub-status-through-strategic-university-of-bristol-collaboration",
+    "title": "Sarawak targets regional AI hub status through strategic University of Bristol collaboration",
+    "section": "Research & Universities",
+    "tags": [
+      "University of Bristol",
+      "AI hub",
+      "research",
+      "talent"
+    ],
+    "summary": "Sarawak is using a University of Bristol collaboration to support its ambition of becoming a regional AI hub, linking international research partnerships with local capability building.",
+    "why_it_matters": "This strengthens the research-partnership thread behind Sarawak’s AI ambitions and gives the brief a concrete university anchor.",
+    "confidence": "high",
+    "caveat": "Search result provides date and title; revisit source before direct quotation."
+  },
+  {
+    "id": "sarawaktribune-global-ai-race-2026-05-05",
+    "date": "2026-05-05",
+    "source": "Sarawak Tribune",
+    "url": "https://www.sarawaktribune.com/sarawak-plugs-into-global-ai-race",
+    "title": "Sarawak Plugs Into Global AI Race",
+    "section": "Research & Universities",
+    "tags": [
+      "University of Bristol",
+      "AI research",
+      "aerospace",
+      "computing power"
+    ],
+    "summary": "Sarawak is positioning itself as a regional AI and data-driven economy hub through strategic collaboration with the University of Bristol and related research and aerospace discussions.",
+    "why_it_matters": "This broadens the AI brief beyond local adoption and shows Sarawak seeking external research and compute partnerships.",
+    "confidence": "high",
+    "caveat": "Publication date inferred from source snippet context (May 5)."
+  },
+  {
+    "id": "borneopost-ai-future-takes-shape-2026-05-03",
+    "date": "2026-05-03",
+    "source": "The Borneo Post",
+    "url": "https://www.theborneopost.com/2026/05/03/sarawaks-ai-future-takes-shape",
+    "title": "Sarawak's AI future takes shape",
+    "section": "Government & Policy",
+    "tags": [
+      "SAIC",
+      "AI Blueprint",
+      "SDE 2030",
+      "PCDS 2030"
+    ],
+    "summary": "SAIC is developing the Sarawak AI Blueprint 2026–2030, positioning the state’s AI agenda alongside SDE 2030 and PCDS 2030 rather than as a standalone technology push.",
+    "why_it_matters": "This is a core roadmap item: it shows Sarawak’s AI direction being formalised into a planning document.",
+    "confidence": "high",
+    "caveat": "Search result provides date and title; revisit source before direct quotation."
+  },
+  {
+    "id": "borneopost-ai-grid-model-2026-04-29",
+    "date": "2026-04-29",
+    "source": "The Borneo Post",
+    "url": "https://www.theborneopost.com/2026/04/29/sarawak-eyes-ai-grid-model-as-data-centres-may-become-obsolete-says-premier",
+    "title": "Sarawak eyes AI grid model as data centres may become obsolete, says Premier",
+    "section": "Infrastructure",
+    "tags": [
+      "AI Grid",
+      "data centres",
+      "compute infrastructure",
+      "Premier"
+    ],
+    "summary": "Sarawak is exploring an AI grid-style infrastructure model as the Premier questions whether conventional data-centre approaches may be overtaken by more distributed compute systems.",
+    "why_it_matters": "This is important because it sharpens the infrastructure thesis: Sarawak may frame AI capacity around grids and compute architecture, not just data-centre construction.",
+    "confidence": "high",
+    "caveat": "Search result provides date and title; revisit source before direct quotation."
+  },
+  {
+    "id": "borneopost-ai-early-intervention-screening-2026-04-22",
+    "date": "2026-04-22",
+    "source": "The Borneo Post",
+    "url": "https://www.theborneopost.com/2026/04/22/sarawak-expands-early-intervention-with-ai-screening",
+    "title": "Sarawak expands early intervention with AI screening",
+    "section": "Public Services",
+    "tags": [
+      "AI screening",
+      "early childhood",
+      "SeDidik",
+      "public services"
+    ],
+    "summary": "Sarawak is rolling out AI-driven early childhood screening across SeDidik centres, giving the state’s AI agenda a practical public-service use case beyond policy and infrastructure.",
+    "why_it_matters": "This is a grounded adoption signal: AI is being applied to service delivery for children rather than only discussed at strategy level.",
+    "confidence": "high",
+    "caveat": "Search result provides date and title; revisit source before direct quotation."
+  },
+  {
+    "id": "the-edge-sarawak-adopts-ai-2026-04-13",
+    "date": "2026-04-13",
+    "source": "The Edge Malaysia",
+    "url": "https://theedgemalaysia.com/node/799399",
+    "title": "Digital State: Sarawak adopts AI to address citizen needs",
+    "section": "Government & Policy",
+    "tags": [
+      "SAIC",
+      "Dayang",
+      "public-sector AI",
+      "SDEB 2030"
+    ],
+    "summary": "Sarawak is moving from digitalisation into early AI adoption across public services, with Dayang as a citizen-facing AI assistant and SAIC coordinating policy and adoption. The article frames AI as a way to improve services, productivity, inclusion, and data-driven governance while noting readiness gaps.",
+    "why_it_matters": "This is the strongest baseline context item for the brief: it explains the institutions, policy frame, and adoption barriers behind Sarawak's AI push.",
+    "confidence": "high",
+    "caveat": "Use as background analysis; verify article date/access before quoting."
+  },
+  {
+    "id": "borneopost-ai-powerhouse-skills-2026-04-01",
+    "date": "2026-04-01",
+    "source": "The Borneo Post",
+    "url": "https://www.theborneopost.com/2026/04/01/sarawak-envisions-regional-ai-powerhouse-status-via-skills-talent-developments",
+    "title": "Sarawak envisions regional AI powerhouse status via skills, talent developments",
+    "section": "Education & Workforce",
+    "tags": [
+      "skills",
+      "talent",
+      "AI powerhouse",
+      "workforce"
+    ],
+    "summary": "Sarawak is linking regional AI leadership to skills and talent development, suggesting that workforce readiness is becoming part of the state’s AI competitiveness strategy.",
+    "why_it_matters": "This helps separate real AI strategy from hype: talent capacity will decide whether Sarawak can execute its policy and infrastructure ambitions.",
+    "confidence": "high",
+    "caveat": "Search result provides date and title; revisit source before direct quotation."
+  },
+  {
+    "id": "borneopost-ai-blueprint-regional-producer-2026-03-20",
+    "date": "2026-03-20",
+    "source": "The Borneo Post",
+    "url": "https://www.theborneopost.com/2026/03/20/sarawak-ai-blueprint-expected-in-second-half-of-2026-aims-to-position-state-as-regional-ai-producer",
+    "title": "Sarawak AI blueprint expected in second half of 2026, aims to position state as regional AI producer",
+    "section": "Government & Policy",
+    "tags": [
+      "AI Blueprint",
+      "regional AI producer",
+      "SAIC",
+      "policy"
+    ],
+    "summary": "Sarawak’s AI blueprint is expected in the second half of 2026, with the stated ambition of moving the state toward regional AI production rather than passive technology consumption.",
+    "why_it_matters": "This is one of the clearest policy-timeline signals for the brief and should remain a baseline item until the blueprint is released.",
+    "confidence": "high",
+    "caveat": "Search result provides date and title; revisit source before direct quotation."
+  },
+  {
+    "id": "borneopost-ai-journey-ambition-execution-2026-03-08",
+    "date": "2026-03-08",
+    "source": "The Borneo Post",
+    "url": "https://www.theborneopost.com/2026/03/08/sarawaks-ai-journey-from-ambition-to-execution",
+    "title": "Sarawak's AI journey: From ambition to execution",
+    "section": "Government & Policy",
+    "tags": [
+      "AI hub",
+      "execution",
+      "policy",
+      "SAIC"
+    ],
+    "summary": "Sarawak’s ambition to become a regional AI hub is being framed as a shift from policy intent toward execution, with institutional signals beginning to accumulate around SAIC and the wider digital agenda.",
+    "why_it_matters": "This is useful context for tracking whether Sarawak’s AI story is moving from announcements into implementation milestones.",
+    "confidence": "high",
+    "caveat": "Search result provides date and title; revisit source before direct quotation."
   }
 ]

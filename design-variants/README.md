@@ -23,5 +23,12 @@ Darker, dashboard-like, higher density. More useful as a SaaS/intelligence produ
 
 Choose this if the priority is: **turning the brief into a monitoring product**.
 
+## D — Civic intelligence feed
+File: `variant-d-civic-intelligence-feed.html`
+
+A cleaner institutional/card-based Sarawak.News direction based on the new brief: light civic-tech interface, top nav, hero, category pills, three featured intelligence cards, two-column feed/sidebar, newsletter signup, and explicit independent-publication footer note.
+
+Choose this if the priority is: **credible civic intelligence platform for agencies, GLCs, universities, founders, investors, civil servants, and tech workers**.
+
 ## Current recommendation
-Pick A for now. It addresses the stated complaint most directly: the current layout was not close enough to the source of inspiration.
+Use D as the next serious product direction. It keeps the intelligence-feed idea but feels more credible and scalable than A for sarawak.news.
