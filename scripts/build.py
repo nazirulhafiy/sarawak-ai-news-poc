@@ -59,7 +59,7 @@ def render_index(items: list[dict]) -> str:
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="AI.Sarawak.News is a curated Sarawak AI intelligence brief tracking government, universities, businesses, infrastructure, and future-economy signals." />
+  <meta name="description" content="AI Sarawak and Sarawak AI news, curated from Sarawak government, universities, businesses, infrastructure, and future-economy signals." />
   <meta name="google-site-verification" content="5Ro7_ZjEKgT00hwHzOx0paD1Cme1tLYEGdttr_CwHvo" />
   <meta name="robots" content="index,follow" />
   <meta property="og:type" content="website" />
