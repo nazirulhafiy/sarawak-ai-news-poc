@@ -1,6 +1,6 @@
 import unittest
 
-from scripts.audit_dates import extract_published_date, find_date_mismatches
+from scripts.audit_dates import DateFetchError, extract_published_date, find_date_mismatches
 
 
 class AuditDatesTest(unittest.TestCase):
@@ -37,10 +37,21 @@ class AuditDatesTest(unittest.TestCase):
             "https://example.test/wrong": '<meta property="article:published_time" content="2026-05-06T10:31:03+08:00">',
             "https://example.test/right": '<meta property="article:published_time" content="2026-05-20T19:06:14+08:00">',
         }
-        mismatches = find_date_mismatches(items, lambda url: html_by_url[url])
+        mismatches, unavailable = find_date_mismatches(items, lambda url: html_by_url[url])
+        self.assertEqual(unavailable, [])
         self.assertEqual(len(mismatches), 1)
         self.assertEqual(mismatches[0].expected, "2026-05-06")
         self.assertEqual(mismatches[0].actual, "2026-06-28")
+
+    def test_treats_fetch_errors_as_unavailable_not_mismatch(self):
+        items = [{"title": "Unavailable", "url": "https://example.test/down", "date": "2026-06-28"}]
+        mismatches, unavailable = find_date_mismatches(
+            items,
+            lambda url: (_ for _ in ()).throw(DateFetchError(url, "HTTP 500")),
+        )
+        self.assertEqual(mismatches, [])
+        self.assertEqual(len(unavailable), 1)
+        self.assertEqual(unavailable[0].reason, "HTTP 500")
 
 
 if __name__ == "__main__":

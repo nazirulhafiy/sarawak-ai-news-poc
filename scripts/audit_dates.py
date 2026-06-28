@@ -10,6 +10,7 @@ from datetime import datetime, timezone, timedelta
 from html import unescape
 from pathlib import Path
 from typing import Callable, Iterable
+from urllib.error import HTTPError, URLError
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / "items.json"
@@ -22,6 +23,19 @@ class DateMismatch:
     url: str
     expected: str
     actual: str
+
+
+@dataclass(frozen=True)
+class DateFetchError(Exception):
+    url: str
+    reason: str
+
+
+@dataclass(frozen=True)
+class UnavailableSource:
+    title: str
+    url: str
+    reason: str
 
 
 def _strip_tags(value: str) -> str:
@@ -97,29 +111,48 @@ def extract_published_date(html: str) -> str | None:
 
 def fetch_html(url: str) -> str:
     request = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 SarawakNewsDateAudit/1.0"})
-    with urllib.request.urlopen(request, timeout=30) as response:
-        return response.read().decode("utf-8", "ignore")
+    try:
+        with urllib.request.urlopen(request, timeout=30) as response:
+            return response.read().decode("utf-8", "ignore")
+    except HTTPError as exc:
+        raise DateFetchError(url, f"HTTP {exc.code}") from exc
+    except URLError as exc:
+        raise DateFetchError(url, str(exc.reason)) from exc
+    except TimeoutError as exc:
+        raise DateFetchError(url, "timeout") from exc
 
 
 def load_items(path: Path = DATA) -> list[dict]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def find_date_mismatches(items: Iterable[dict], html_loader: Callable[[str], str] = fetch_html) -> list[DateMismatch]:
+def find_date_mismatches(
+    items: Iterable[dict], html_loader: Callable[[str], str] = fetch_html
+) -> tuple[list[DateMismatch], list[UnavailableSource]]:
     mismatches: list[DateMismatch] = []
+    unavailable: list[UnavailableSource] = []
     for item in items:
-        expected = extract_published_date(html_loader(item["url"]))
+        try:
+            expected = extract_published_date(html_loader(item["url"]))
+        except DateFetchError as exc:
+            unavailable.append(UnavailableSource(item["title"], item["url"], exc.reason))
+            continue
         actual = str(item.get("date", ""))
         if expected and actual != expected:
             mismatches.append(DateMismatch(item["title"], item["url"], expected, actual))
-    return mismatches
+    return mismatches, unavailable
 
 
 def audit(path: Path = DATA) -> int:
     items = load_items(path)
-    mismatches = find_date_mismatches(items)
+    mismatches, unavailable = find_date_mismatches(items)
+    if unavailable:
+        print("Date audit warning: skipped temporarily unavailable sources:", file=sys.stderr)
+        for source in unavailable:
+            print(f"- {source.title}\n  url: {source.url}\n  reason: {source.reason}", file=sys.stderr)
     if not mismatches:
-        print(f"Date audit passed for {len(items)} items")
+        checked = len(items) - len(unavailable)
+        print(f"Date audit passed for {checked}/{len(items)} reachable items")
         return 0
     print("Date audit failed:", file=sys.stderr)
     for mismatch in mismatches:
