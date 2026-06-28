@@ -12,7 +12,7 @@
       "public services",
       "SwinTalk"
     ],
-    "summary": "Sarawak AI Centre’s Patrick Then is framing tools like DeepSAR and SKAS form assistance as practical AI adoption, signalling productivity gains alongside digital-readiness gaps.",
+    "summary": "SAIC frames AI as a productivity multiplier for Sarawak’s public services, businesses, and workforce, while warning that readiness and digital inclusion remain key risks.",
     "why_it_matters": "This provides the public-facing adoption story: AI as service acceleration and workforce capacity expansion, not just infrastructure strategy.",
     "confidence": "high",
     "caveat": "Extractor summary was truncated; revisit source before direct quotation."
@@ -30,7 +30,7 @@
       "public services",
       "AI integration"
     ],
-    "summary": "Sarawak is partnering with Munich on AI-enabled public services and smart city systems, signalling a search for operating models to accelerate local-government delivery.",
+    "summary": "Sarawak’s Munich engagement signals a push to learn from mature smart-city models as it applies AI to public institutions, local government, and citizen services.",
     "why_it_matters": "This is a concrete AI policy/adoption signal: Sarawak is looking abroad for operating models, not just branding AI as a future ambition.",
     "confidence": "high",
     "caveat": "Dated through article publication reference in the source snippet."
@@ -49,7 +49,7 @@
       "PCDS 2030",
       "AI talent"
     ],
-    "summary": "Sarawak is positioning students and young talent as the execution layer for robotics, AI, automation, and smart farming under PCDS 2030 adoption goals.",
+    "summary": "Sarawak is positioning students and young talent as the execution layer for robotics, AI, automation, and smart farming under PCDS 2030.",
     "why_it_matters": "This adds the talent and adoption angle: Sarawak’s AI strategy depends on whether young workers and communities can actually use the tools being promoted.",
     "confidence": "high",
     "caveat": "Search result provides date and title; revisit source before direct quotation."
@@ -85,7 +85,7 @@
       "digital economy",
       "2030 roadmap"
     ],
-    "summary": "Sarawak is exploring AI Grid networks and satellite integration, signalling that its digital-economy roadmap depends on connectivity, compute, and infrastructure readiness across the state.",
+    "summary": "Sarawak’s AI Grid and satellite exploration points to a more distributed infrastructure strategy beyond conventional data centres.",
     "why_it_matters": "This connects AI to the state’s infrastructure layer, showing that the story is not just software but also networks, compute, and connectivity.",
     "confidence": "high",
     "caveat": "Publication date inferred from source snippet context (May 20)."
@@ -105,7 +105,7 @@
       "AI Grid",
       "SAIC"
     ],
-    "summary": "Sarawak is establishing Cambridge-linked Quantum AI and economics collaboration, positioning research partnerships, Sarawak Cloud, and sector applications as parts of a sovereign AI roadmap.",
+    "summary": "Sarawak is linking sovereign AI, Quantum AI research, Cambridge collaboration, and sector-specific use cases into a broader state-led AI capability agenda.",
     "why_it_matters": "This moves Sarawak AI from generic adoption talk into a concrete institutional roadmap: research partnerships plus local AI infrastructure plus applied projects.",
     "confidence": "high",
     "caveat": "Official-speech context; follow-up sources should check implementation progress."
@@ -123,7 +123,7 @@
       "research",
       "talent"
     ],
-    "summary": "Sarawak’s University of Bristol collaboration links AI research, talent development, and international academic networks to the state’s ambition to become a regional AI hub.",
+    "summary": "Sarawak’s University of Bristol collaboration strengthens its regional AI hub ambition by connecting local capability-building with global research and advanced computing exposure.",
     "why_it_matters": "This strengthens the research-partnership thread behind Sarawak’s AI ambitions and gives the brief a concrete university anchor.",
     "confidence": "high",
     "caveat": "Search result provides date and title; revisit source before direct quotation."
@@ -141,7 +141,7 @@
       "aerospace",
       "computing power"
     ],
-    "summary": "Sarawak’s University of Bristol discussions on AI, computing power, and aerospace signal its push to compete for regional data-driven economic capacity and research capacity.",
+    "summary": "Sarawak is using renewable energy, data, AI, aerospace, and high-performance computing discussions to position itself in the global AI economy.",
     "why_it_matters": "This broadens the AI brief beyond local adoption and shows Sarawak seeking external research and compute partnerships.",
     "confidence": "high",
     "caveat": "Publication date verified against source page."
@@ -177,7 +177,7 @@
       "compute infrastructure",
       "Premier"
     ],
-    "summary": "The Premier’s AI Grid remarks signal Sarawak’s interest in future compute models that could reshape conventional data-centre planning and infrastructure strategy decisions.",
+    "summary": "The Premier’s AI Grid remarks signal Sarawak’s interest in future compute models that could challenge conventional data-centre planning.",
     "why_it_matters": "This is important because it sharpens the infrastructure thesis: Sarawak may frame AI capacity around grids and compute architecture, not just data-centre construction.",
     "confidence": "high",
     "caveat": "Search result provides date and title; revisit source before direct quotation."
@@ -213,7 +213,7 @@
       "public-sector AI",
       "SDEB 2030"
     ],
-    "summary": "SAIC and Dayang show Sarawak moving from digitalisation toward citizen-facing AI services, while exposing readiness gaps in governance, data use, and public-sector adoption.",
+    "summary": "Sarawak’s public-sector AI adoption is moving from basic digitalisation toward citizen-facing services, while gaps remain in readiness, talent, inclusion, and data integration.",
     "why_it_matters": "This is the strongest baseline context item for the brief: it explains the institutions, policy frame, and adoption barriers behind Sarawak's AI push.",
     "confidence": "high",
     "caveat": "Use as background analysis; verify article date/access before quoting."
@@ -231,7 +231,7 @@
       "AI powerhouse",
       "workforce"
     ],
-    "summary": "Sarawak is linking regional AI leadership to skills and talent development, signalling that workforce readiness is becoming central to its digital-economy competitiveness.",
+    "summary": "Sarawak is treating AI talent development as a core competitiveness issue, linking regional AI leadership to skills, mindset, and workforce readiness.",
     "why_it_matters": "This helps separate real AI strategy from hype: talent capacity will decide whether Sarawak can execute its policy and infrastructure ambitions.",
     "confidence": "high",
     "caveat": "Search result provides date and title; revisit source before direct quotation."
@@ -249,7 +249,7 @@
       "SAIC",
       "policy"
     ],
-    "summary": "Sarawak’s planned AI Blueprint positions the state as a potential regional AI producer, signalling a shift from technology adoption toward policy-led capability building.",
+    "summary": "SAIC’s upcoming AI Blueprint aims to move Sarawak from AI adoption toward regional AI production, with pillars covering infrastructure, technology, talent, and policy.",
     "why_it_matters": "This is one of the clearest policy-timeline signals for the brief and should remain a baseline item until the blueprint is released.",
     "confidence": "high",
     "caveat": "Search result provides date and title; revisit source before direct quotation."
@@ -267,7 +267,7 @@
       "policy",
       "SAIC"
     ],
-    "summary": "Sarawak’s AI journey is moving from ambition toward execution, with SAIC and the wider digital agenda becoming markers to watch for implementation progress.",
+    "summary": "Sarawak’s AI agenda is shifting from ambition to groundwork, with SAIC positioned as the catalyst for building the state’s long-term AI foundation.",
     "why_it_matters": "This is useful context for tracking whether Sarawak’s AI story is moving from announcements into implementation milestones.",
     "confidence": "high",
     "caveat": "Search result provides date and title; revisit source before direct quotation."

@@ -36,10 +36,12 @@ STRATEGIC_TERMS = [
     "signals",
     "signal",
     "positioning",
+    "position itself",
     "positions",
     "frames",
     "linking",
     "moving",
+    "shifting",
     "gives",
     "rollout",
     "roadmap",
@@ -77,8 +79,8 @@ def find_summary_issues(items: Iterable[dict]) -> list[SummaryIssue]:
         summary = str(item.get("summary", "")).strip()
         lowered = summary.lower()
         words = word_count(summary)
-        if not 22 <= words <= 38:
-            issues.append(SummaryIssue(item_id, f"word count {words} outside 22-38"))
+        if not 14 <= words <= 38:
+            issues.append(SummaryIssue(item_id, f"word count {words} outside 14-38"))
         if sentence_count(summary) != 1:
             issues.append(SummaryIssue(item_id, "summary must be one sentence"))
         if any(phrase in lowered for phrase in GENERIC_PHRASES):

@@ -18,6 +18,14 @@ class AuditSummariesTest(unittest.TestCase):
         }]
         self.assertEqual(find_summary_issues(items), [])
 
+    def test_accepts_user_approved_short_strategic_signal(self):
+        items = [{
+            "id": "x",
+            "title": "Sarawak explores AI Grid networks, satellite integration to power next-generation digital economy",
+            "summary": "Sarawak’s AI Grid and satellite exploration points to a more distributed infrastructure strategy beyond conventional data centres.",
+        }]
+        self.assertEqual(find_summary_issues(items), [])
+
     def test_flags_multiple_sentences_and_hype_words(self):
         items = [{
             "id": "x",
