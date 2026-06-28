@@ -59,6 +59,18 @@ def render_index(items: list[dict]) -> str:
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="AI.Sarawak.News is a curated Sarawak AI intelligence brief tracking government, universities, businesses, infrastructure, and future-economy signals." />
+  <meta name="google-site-verification" content="5Ro7_ZjEKgT00hwHzOx0paD1Cme1tLYEGdttr_CwHvo" />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AI.Sarawak.News" />
+  <meta property="og:description" content="A curated Sarawak AI intelligence brief tracking government, universities, businesses, infrastructure, and future-economy signals." />
+  <meta property="og:url" content="https://ai.sarawak.news/" />
+  <meta property="og:site_name" content="AI.Sarawak.News" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AI.Sarawak.News" />
+  <meta name="twitter:description" content="A curated Sarawak AI intelligence brief tracking government, universities, businesses, infrastructure, and future-economy signals." />
+  <link rel="canonical" href="https://ai.sarawak.news/" />
   <title>AI.Sarawak.News</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>" />
   <link rel="stylesheet" href="style.css" />
@@ -94,6 +106,14 @@ def build() -> None:
     (DIST / "index.html").write_text(render_index(items), encoding="utf-8")
     (DIST / "style.css").write_text((ROOT / "site" / "style.css").read_text(encoding="utf-8"), encoding="utf-8")
     (DIST / "items.json").write_text(json.dumps(items, indent=2), encoding="utf-8")
+    (DIST / "robots.txt").write_text("User-agent: *\nAllow: /\nSitemap: https://ai.sarawak.news/sitemap.xml\n", encoding="utf-8")
+    (DIST / "sitemap.xml").write_text("""<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
+  <url>
+    <loc>https://ai.sarawak.news/</loc>
+  </url>
+</urlset>
+""", encoding="utf-8")
     print(f"Built {DIST / 'index.html'} with {len(items)} feed items")
 
 
