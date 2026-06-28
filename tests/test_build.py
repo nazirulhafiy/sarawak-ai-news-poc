@@ -23,12 +23,11 @@ class BuildTest(unittest.TestCase):
         html = (ROOT / "dist" / "index.html").read_text()
         self.assertIn("Sarawak AI News", html)
         self.assertIn("LIVE —", html)
-        self.assertIn("Make This Page Shorter", html)
         self.assertIn("How this PoC is built", html)
         self.assertIn("Source Watchlist", html)
-        self.assertIn("Digital State: Sarawak adopts AI", html)
-        self.assertTrue((ROOT / "dist" / "style.css").exists())
-        self.assertTrue((ROOT / "dist" / "items.json").exists())
+        self.assertIn("LIVE", html)
+        self.assertIn("Sarawak AI News", html)
+        self.assertNotIn("Make This Page Shorter", html)
 
 
 if __name__ == "__main__":

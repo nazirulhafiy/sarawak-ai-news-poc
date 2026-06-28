@@ -33,7 +33,7 @@ def prose_block(item: dict) -> str:
     caveat_html = f'<p class="caveat">Caveat: {esc(caveat)}</p>' if caveat else ""
     return f"""
     <article class="signal" id="{esc(item['id'])}">
-      <p class="source-line">{esc(item['source'])} · {esc(item['date'])} · {esc(item.get('confidence', 'unknown'))} confidence</p>
+      <p class="source-line">{esc(item['source'])} · {esc(item['date'])}</p>
       <h3><a href="{esc(item['url'])}" rel="noopener noreferrer">{esc(item['title'])}</a></h3>
       <p class="tag-line">{esc(tags)}</p>
       <p>{esc(item['summary'])}</p>
@@ -49,10 +49,17 @@ def render_index(items: list[dict], sources: list[dict]) -> str:
     generated = datetime.now().strftime("%A, %B %-d, %Y — Updated %-I:%M %p")
 
     sections = []
+    grouped = []
     for section in SECTION_ORDER:
-        section_items = [item for item in items if item["section"] == section]
+        section_items = sorted(
+            [item for item in items if item["section"] == section],
+            key=lambda item: item["date"],
+            reverse=True,
+        )
         if not section_items:
             continue
+        grouped.append((section_items[0]["date"], section, section_items))
+    for _, section, section_items in sorted(grouped, key=lambda row: row[0], reverse=True):
         body = "\n".join(prose_block(item) for item in section_items)
         sections.append(f"<section class=\"story-section\"><h2>{esc(section)}</h2>{body}</section>")
 
@@ -80,12 +87,6 @@ def render_index(items: list[dict], sources: list[dict]) -> str:
   </nav>
 
   <main id="brief" class="page">
-    <div class="utility-row">
-      <a href="#how-built">How This Is Built</a>
-      <a href="#sources">Source Watchlist</a>
-      <button disabled>Make This Page Shorter</button>
-    </div>
-
     <p class="live-line">LIVE — {esc(generated)}</p>
     <p class="edition">Sarawak signal brief</p>
 
