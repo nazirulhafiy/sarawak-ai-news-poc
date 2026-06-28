@@ -54,15 +54,13 @@ def render_signal(item: dict, index: int) -> str:
 
 def render_index(items: list[dict]) -> str:
     feed = "\n".join(render_signal(item, index) for index, item in enumerate(items, 1))
-    favicon_svg = """<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text x='50%' y='50%' dominant-baseline='central' text-anchor='middle' font-size='52'>🧠</text></svg>"""
-    favicon = "data:image/svg+xml," + favicon_svg.replace("#", "%23").replace("<", "%3C").replace(">", "%3E").replace(" ", "%20").replace('"', "%22").replace("'", "%27")
     return f"""<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sarawak.News — Sarawak Intelligence Feed</title>
-  <link rel="icon" href="{favicon}" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
