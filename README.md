@@ -6,7 +6,7 @@ Proof-of-concept for an AI-assisted regional intelligence brief tracking Sarawak
 
 - A small curated dataset can render into an Aligned-News-inspired briefing page: live line, sparse prose, large lead headline, short sections, and source links.
 - Source attribution, caveats, and tags are first-class fields.
-- A lightweight ingestion command can scan watched source pages and produce candidate URLs for manual review.
+- A lightweight ingestion command can scan watched source pages, fetch candidate article pages, and produce candidate URLs for manual review.
 - The project can be hosted as a static site later without a backend.
 - Summarization/publication automation is intentionally deferred until source signal is validated.
 
@@ -25,7 +25,7 @@ python3 scripts/ingest.py --limit-per-source 5
 # writes dist/candidates.json and dist/candidates.md
 ```
 
-The ingestion command discovers candidates only. Read the source article before adding anything to `data/items.json`.
+The ingestion command discovers candidates only. It now checks candidate article pages and keeps only items with both Sarawak relevance and concrete AI/digital-economy terms. Read the source article before adding anything to `data/items.json`.
 
 ## Test
 

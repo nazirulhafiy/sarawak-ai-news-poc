@@ -23,6 +23,11 @@ KEYWORDS = [
     "artificial intelligence",
     "machine learning",
     "digital economy",
+    "digital transformation",
+    "digital entrepreneur",
+    "digital entrepreneurs",
+    "startup",
+    "deep-tech",
     "data centre",
     "data center",
     "sovereign ai",
@@ -50,6 +55,8 @@ class Candidate:
     title: str
     score: int
     matched_keywords: list[str]
+    article_score: int | None = None
+    article_matched_keywords: list[str] | None = None
     status: str = "candidate"
     error: str | None = None
 
@@ -118,12 +125,79 @@ def score_candidate(source_name: str, url: str, title: str) -> tuple[int, list[s
 
     haystack = f"{parsed.path} {title}".lower()
     matched = keyword_matches(haystack)
+    if "sarawak" in matched and not any(
+        kw in matched
+        for kw in [
+            "ai",
+            "artificial intelligence",
+            "machine learning",
+            "digital economy",
+            "digital transformation",
+            "digital entrepreneur",
+            "digital entrepreneurs",
+            "startup",
+            "deep-tech",
+            "data centre",
+            "data center",
+            "sovereign ai",
+            "ai grid",
+            "smart city",
+            "iot",
+            "5g",
+            "satellite",
+            "automation",
+            "robotic",
+            "saic",
+            "deepSAR",
+            "dayang",
+        ]
+    ):
+        return 0, matched
+    return relevance_score(matched), matched
+
+
+def relevance_score(matched: list[str]) -> int:
     score = len(matched)
     if "sarawak" in matched:
         score += 2
     if any(kw in matched for kw in ["ai", "artificial intelligence", "saic", "sovereign ai", "ai grid"]):
         score += 2
-    return max(score, 0), matched
+    return max(score, 0)
+
+
+def is_article_relevant(body: str, min_score: int) -> tuple[bool, int, list[str]]:
+    text = clean_text(body).lower()
+    matched = keyword_matches(text)
+    score = relevance_score(matched)
+    has_place = "sarawak" in matched
+    has_focus = any(
+        kw in matched
+        for kw in [
+            "ai",
+            "artificial intelligence",
+            "machine learning",
+            "digital economy",
+            "digital transformation",
+            "digital entrepreneur",
+            "digital entrepreneurs",
+            "startup",
+            "deep-tech",
+            "data centre",
+            "data center",
+            "sovereign ai",
+            "ai grid",
+            "smart city",
+            "iot",
+            "5g",
+            "satellite",
+            "automation",
+            "robotic",
+            "saic",
+            "deepSAR",
+            "dayang",
+        ]
+    )
+    return has_place and has_focus and score >= min_score, score, matched
 
 
 def discover(limit_per_source: int, min_score: int = 4) -> list[Candidate]:
@@ -135,7 +209,7 @@ def discover(limit_per_source: int, min_score: int = 4) -> list[Candidate]:
         try:
             status, body = fetch(source_url)
         except (HTTPError, URLError, TimeoutError, OSError) as exc:
-            candidates.append(Candidate(source_name, source_url, source_url, source_name, 0, [], "error", str(exc)))
+            candidates.append(Candidate(source_name, source_url, source_url, source_name, 0, [], status="error", error=str(exc)))
             continue
 
         landing_title = page_title(body, source_name)
@@ -150,11 +224,25 @@ def discover(limit_per_source: int, min_score: int = 4) -> list[Candidate]:
             score, matched = score_candidate(source_name, url, title)
             if score >= min_score:
                 source_seen.add(url)
-                source_candidates.append(Candidate(source_name, source_url, url, title, score, matched, f"http {status}"))
+                source_candidates.append(Candidate(source_name, source_url, url, title, score, matched, status=f"source http {status}"))
 
         for candidate in sorted(source_candidates, key=lambda c: (-c.score, c.title))[:limit_per_source]:
+            if candidate.url in seen_urls:
+                continue
             seen_urls.add(candidate.url)
-            candidates.append(candidate)
+            try:
+                article_status, article_body = fetch(candidate.url)
+                relevant, article_score, article_matches = is_article_relevant(article_body, min_score)
+                candidate.article_score = article_score
+                candidate.article_matched_keywords = article_matches
+                candidate.status = f"article http {article_status}" if relevant else "rejected: weak article relevance"
+                if relevant:
+                    candidates.append(candidate)
+            except (HTTPError, URLError, TimeoutError, OSError) as exc:
+                candidate.status = "error"
+                candidate.error = str(exc)
+                candidates.append(candidate)
+            time.sleep(0.1)
         time.sleep(0.2)
     return sorted(candidates, key=lambda c: (-c.score, c.source, c.title))
 
@@ -164,9 +252,10 @@ def write_outputs(candidates: list[Candidate], output: Path) -> None:
     payload = [candidate.__dict__ for candidate in candidates]
     output.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
     md = output.with_suffix(".md")
-    rows = ["# Candidate URLs", "", "Generated for manual review. Do not publish candidates without reading the source article.", "", "| Score | Source | Title | URL | Status |", "| ---: | --- | --- | --- | --- |"]
+    rows = ["# Candidate URLs", "", "Generated for manual review. Do not publish candidates without reading the source article.", "", "| Score | Article Score | Source | Title | URL | Status |", "| ---: | ---: | --- | --- | --- | --- |"]
     for c in candidates:
-        rows.append(f"| {c.score} | {c.source} | {c.title.replace('|', '/')} | {c.url} | {c.status} |")
+        article_score = "" if c.article_score is None else str(c.article_score)
+        rows.append(f"| {c.score} | {article_score} | {c.source} | {c.title.replace('|', '/')} | {c.url} | {c.status} |")
     md.write_text("\n".join(rows) + "\n", encoding="utf-8")
 
 
