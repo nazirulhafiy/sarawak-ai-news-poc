@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import html
 import json
-from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -54,7 +53,6 @@ def render_signal(item: dict, index: int) -> str:
 
 
 def render_index(items: list[dict]) -> str:
-    generated = datetime.now().strftime("%A, %B %-d, %Y — Updated %-I:%M %p")
     feed = "\n".join(render_signal(item, index) for index, item in enumerate(items, 1))
     return f"""<!doctype html>
 <html lang="en">
@@ -70,10 +68,10 @@ def render_index(items: list[dict]) -> str:
   </header>
 
   <main class="page">
-    <p class="live-line">LIVE — {esc(generated)}</p>
+    <p class="live-line">SUNDAY, JUNE 28, 2026 — UPDATED 11:05 AM</p>
     <header class="lede">
-      <h1>Tracking Sarawak’s AI, technology, and future economy.</h1>
-      <p>An independent, source-attributed intelligence feed for Sarawak’s AI, digital economy, policy, startups, energy, and PCDS 2030 signals.</p>
+      <h1>Tracking AI news and developments in Sarawak.</h1>
+      <p>An independent news aggregator collecting important AI updates from Sarawak’s government, universities, businesses, and tech ecosystem.</p>
     </header>
 
     <section class="feed" aria-label="Latest intelligence signals">
