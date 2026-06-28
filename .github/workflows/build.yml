@@ -25,6 +25,8 @@ jobs:
           python-version: '3.12'
       - name: Run tests
         run: python -m unittest discover -s tests -v
+      - name: Audit source dates
+        run: python scripts/audit_dates.py
       - name: Build static site
         run: python scripts/build.py
       - name: Upload Pages artifact
