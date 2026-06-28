@@ -14,6 +14,7 @@ Sarawak AI News PoC: static proof-of-concept for a source-attributed regional AI
 
 ```bash
 python3 scripts/build.py
+python3 scripts/ingest.py --limit-per-source 5
 python3 -m unittest discover -s tests -v
 python3 -m http.server 4173 -d dist
 ```

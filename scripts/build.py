@@ -3,7 +3,7 @@ from __future__ import annotations
 import html
 import json
 from collections import Counter
-from datetime import date
+from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -27,17 +27,17 @@ def esc(value: object) -> str:
     return html.escape(str(value), quote=True)
 
 
-def item_card(item: dict) -> str:
-    tags = "".join(f'<span class="tag">{esc(tag)}</span>' for tag in item.get("tags", []))
+def prose_block(item: dict) -> str:
+    tags = " · ".join(item.get("tags", [])[:4])
     caveat = item.get("caveat")
-    caveat_html = f'<p class="caveat"><strong>Caveat:</strong> {esc(caveat)}</p>' if caveat else ""
+    caveat_html = f'<p class="caveat">Caveat: {esc(caveat)}</p>' if caveat else ""
     return f"""
-    <article class="card">
-      <div class="meta"><span>{esc(item['source'])}</span><span>{esc(item['date'])}</span><span>{esc(item.get('confidence', 'unknown'))} confidence</span></div>
+    <article class="signal" id="{esc(item['id'])}">
+      <p class="source-line">{esc(item['source'])} · {esc(item['date'])} · {esc(item.get('confidence', 'unknown'))} confidence</p>
       <h3><a href="{esc(item['url'])}" rel="noopener noreferrer">{esc(item['title'])}</a></h3>
-      <div class="tags">{tags}</div>
+      <p class="tag-line">{esc(tags)}</p>
       <p>{esc(item['summary'])}</p>
-      <p class="why"><strong>Why it matters for Sarawak:</strong> {esc(item['why_it_matters'])}</p>
+      <p><strong>Why it matters:</strong> {esc(item['why_it_matters'])}</p>
       {caveat_html}
     </article>
     """
@@ -46,20 +46,23 @@ def item_card(item: dict) -> str:
 def render_index(items: list[dict], sources: list[dict]) -> str:
     section_counts = Counter(item["section"] for item in items)
     tag_counts = Counter(tag for item in items for tag in item.get("tags", []))
+    generated = datetime.now().strftime("%A, %B %-d, %Y — Updated %-I:%M %p")
+    lead = items[0]
+
     sections = []
     for section in SECTION_ORDER:
         section_items = [item for item in items if item["section"] == section]
         if not section_items:
             continue
-        cards = "\n".join(item_card(item) for item in section_items)
-        sections.append(f'<section><h2>{esc(section)}</h2>{cards}</section>')
+        body = "\n".join(prose_block(item) for item in section_items)
+        sections.append(f"<section class=\"story-section\"><h2>{esc(section)}</h2>{body}</section>")
 
-    source_rows = "\n".join(
-        f"<tr><td>{esc(src['tier'])}</td><td><a href=\"{esc(src['url'])}\">{esc(src['name'])}</a></td><td>{esc(src['category'])}</td><td>{esc(src['expected_yield'])}</td></tr>"
+    source_links = "".join(
+        f'<li><a href="{esc(src["url"])}">{esc(src["name"])}</a> <span>Tier {esc(src["tier"])} · {esc(src["expected_yield"])}</span></li>'
         for src in sorted(sources, key=lambda s: (s["tier"], s["name"]))
     )
-    section_summary = "".join(f"<li>{esc(k)}: {v}</li>" for k, v in section_counts.items())
-    top_tags = "".join(f'<span class="tag">{esc(tag)} × {count}</span>' for tag, count in tag_counts.most_common(12))
+    tag_links = "".join(f"<span>{esc(tag)} × {count}</span>" for tag, count in tag_counts.most_common(10))
+    section_line = " · ".join(f"{name}: {count}" for name, count in section_counts.items())
 
     return f"""<!doctype html>
 <html lang="en">
@@ -70,35 +73,55 @@ def render_index(items: list[dict], sources: list[dict]) -> str:
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="hero">
-    <p class="eyebrow">Proof of Concept · Generated {date.today().isoformat()}</p>
-    <h1>Sarawak AI News</h1>
-    <p class="dek">A source-attributed regional intelligence brief for Sarawak AI, digital economy, infrastructure, public services, research, and workforce signals.</p>
-    <div class="stats">
-      <div><strong>{len(items)}</strong><span>seed items</span></div>
-      <div><strong>{len(sources)}</strong><span>watch sources</span></div>
-      <div><strong>{len(section_counts)}</strong><span>active sections</span></div>
-    </div>
-  </header>
+  <nav class="topbar">
+    <a class="brand" href="#">Sarawak AI News</a>
+    <a href="#brief">Brief</a>
+    <a href="#sources">Sources</a>
+    <a href="items.json">Data</a>
+  </nav>
 
-  <main>
-    <section class="brief-note">
-      <h2>Editorial stance</h2>
-      <p>This is not a live aggregator yet. It is a curated validation brief: every item must link to the original source, summarize in original wording, and explain why the signal matters for Sarawak.</p>
-      <ul>{section_summary}</ul>
-      <div class="tags">{top_tags}</div>
+  <main id="brief" class="page">
+    <div class="utility-row">
+      <a href="#how-built">How This Is Built</a>
+      <a href="#sources">Source Watchlist</a>
+      <button disabled>Make This Page Shorter</button>
+    </div>
+
+    <p class="live-line">LIVE — {esc(generated)}</p>
+    <p class="edition">Sarawak signal brief</p>
+
+    <header class="lede">
+      <h1>{esc(lead['title'])}</h1>
+      <p>{esc(lead['summary'])}</p>
+      <p>{esc(lead['why_it_matters'])}</p>
+    </header>
+
+    <section class="story-section">
+      <h2>The pattern</h2>
+      <p>Sarawak AI is not showing up as one product launch.</p>
+      <p>It is showing up as a stack: public-service assistants, sovereign infrastructure, agency coordination, research partnerships, and workforce readiness.</p>
+      <p>The important question is whether these signals repeat every week.</p>
     </section>
 
     {''.join(sections)}
 
-    <section>
+    <section id="how-built" class="about-box">
+      <h2>How this PoC is built</h2>
+      <p>Seed data is stored in JSON, rendered into a static page, and checked by unit tests. Candidate ingestion is intentionally manual-review first: it discovers URLs from watched sources, but does not summarize or publish them automatically.</p>
+      <p>{esc(section_line)}</p>
+      <div class="tag-cloud">{tag_links}</div>
+    </section>
+
+    <section id="sources" class="source-box">
       <h2>Source Watchlist</h2>
-      <table>
-        <thead><tr><th>Tier</th><th>Source</th><th>Category</th><th>Expected yield</th></tr></thead>
-        <tbody>{source_rows}</tbody>
-      </table>
+      <p>{len(sources)} sources watched. Every headline should link back to the original source.</p>
+      <ol>{source_links}</ol>
     </section>
   </main>
+
+  <footer>
+    Built as a private PoC. Source-attributed summaries only. No full-article republication.
+  </footer>
 </body>
 </html>
 """

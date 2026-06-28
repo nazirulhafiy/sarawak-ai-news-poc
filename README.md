@@ -4,10 +4,11 @@ Proof-of-concept for an AI-assisted regional intelligence brief tracking Sarawak
 
 ## What this PoC proves
 
-- A small curated dataset can render into a readable weekly briefing page.
+- A small curated dataset can render into an Aligned-News-inspired briefing page: live line, sparse prose, large lead headline, short sections, and source links.
 - Source attribution, caveats, and tags are first-class fields.
+- A lightweight ingestion command can scan watched source pages and produce candidate URLs for manual review.
 - The project can be hosted as a static site later without a backend.
-- Automation is intentionally deferred until source signal is validated.
+- Summarization/publication automation is intentionally deferred until source signal is validated.
 
 ## Run locally
 
@@ -16,6 +17,15 @@ python3 scripts/build.py
 python3 -m http.server 4173 -d dist
 # open http://127.0.0.1:4173
 ```
+
+## Candidate ingestion
+
+```bash
+python3 scripts/ingest.py --limit-per-source 5
+# writes dist/candidates.json and dist/candidates.md
+```
+
+The ingestion command discovers candidates only. Read the source article before adding anything to `data/items.json`.
 
 ## Test
 
@@ -33,4 +43,4 @@ python3 -m unittest discover -s tests -v
 
 ## Current status
 
-PoC only. No live publishing automation yet.
+PoC only. Candidate discovery exists; no live publishing, scraper-to-summary pipeline, or LLM automation yet.

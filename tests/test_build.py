@@ -17,11 +17,14 @@ class BuildTest(unittest.TestCase):
             self.assertTrue(item["url"].startswith("https://"))
             self.assertLess(len(item["summary"]), 700)
 
-    def test_build_outputs_static_site(self):
+    def test_build_outputs_aligned_style_static_site(self):
         result = subprocess.run([sys.executable, "scripts/build.py"], cwd=ROOT, text=True, capture_output=True, check=True)
         self.assertIn("Built", result.stdout)
         html = (ROOT / "dist" / "index.html").read_text()
         self.assertIn("Sarawak AI News", html)
+        self.assertIn("LIVE —", html)
+        self.assertIn("Make This Page Shorter", html)
+        self.assertIn("How this PoC is built", html)
         self.assertIn("Source Watchlist", html)
         self.assertIn("Digital State: Sarawak adopts AI", html)
         self.assertTrue((ROOT / "dist" / "style.css").exists())
