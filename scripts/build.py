@@ -11,6 +11,14 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 DIST = ROOT / "dist"
 
+SECTION_FILTERS = (
+    ("Government & Policy", "Policy"),
+    ("Education & Workforce", "Education"),
+    ("Infrastructure", "Infrastructure"),
+    ("Research & Universities", "Research"),
+    ("Public Services", "Public Services"),
+)
+
 
 def load_json(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
@@ -74,12 +82,13 @@ def render_compact_signal(item: dict, index: int) -> str:
     if str(item["confidence"]).lower() != "high":
         caveat = f'<p class="story-caveat"><strong>Source note:</strong> {esc(item["caveat"])}</p>'
     return f"""
-    <article class="story-card" id="{slug(item['id'])}">
+    <article class="story-card" id="{slug(item['id'])}" data-section="{slug(item['section'])}">
       <div class="story-rank" aria-label="Chronological item {index}">{index}</div>
       <div class="story-body">
         <p class="story-meta-row">
           <time datetime="{esc(item['date'])}">{esc(format_story_date(item['date']))}</time>
-          <span>{esc(item['source'])}</span>
+          <span class="story-source"><span class="story-source-label">{esc(item['source'])}</span></span>
+          <span class="story-section">{esc(item['section'])}</span>
         </p>
         <h2><a href="{esc(item['url'])}" target="_blank" rel="noopener noreferrer">{esc(item['title'])}</a></h2>
         <p class="story-summary">{esc(item['note'])}</p>
@@ -89,8 +98,34 @@ def render_compact_signal(item: dict, index: int) -> str:
     """
 
 
+def render_category_filter(items: list[dict]) -> str:
+    counts = {section: sum(item["section"] == section for item in items) for section, _ in SECTION_FILTERS}
+    buttons = [
+        f'<button type="button" class="category-filter-button is-active" data-section-filter="all" '
+        f'data-filter-label="All stories" aria-pressed="true">All '
+        f'<span class="category-filter-count" aria-hidden="true">{len(items)}</span></button>'
+    ]
+    buttons.extend(
+        f'<button type="button" class="category-filter-button" data-section-filter="{slug(section)}" '
+        f'data-filter-label="{esc(section)}" aria-pressed="false">{esc(label)} '
+        f'<span class="category-filter-count" aria-hidden="true">{counts[section]}</span></button>'
+        for section, label in SECTION_FILTERS
+        if counts[section]
+    )
+    return f"""
+    <section class="category-filter" aria-labelledby="category-filter-title" data-category-filter hidden>
+      <p class="category-filter-title" id="category-filter-title">Browse by category</p>
+      <div class="category-filter-options">
+        {' '.join(buttons)}
+      </div>
+      <p class="visually-hidden" data-filter-status aria-live="polite">Showing all {len(items)} stories</p>
+    </section>
+    """
+
+
 def render_compact_body(items: list[dict]) -> str:
     feed = "\n".join(render_compact_signal(item, index) for index, item in enumerate(items, 1))
+    category_filter = render_category_filter(items)
     updated_iso, _, updated_compact = last_updated()
 
     return f"""<body>
@@ -101,14 +136,15 @@ def render_compact_body(items: list[dict]) -> str:
   </header>
 
   <main id="content">
-    <p class="updated">LAST UPDATED — <time datetime="{esc(updated_iso)}">{esc(updated_compact)}</time></p>
-
     <header class="brief">
+      <p class="updated"><span class="updated-label">Last updated</span><time datetime="{esc(updated_iso)}">{esc(updated_compact)}</time></p>
       <h1 id="brief-title">Tracking Sarawak’s AI, news, policy, and future economy.</h1>
       <p class="brief-deck">An independent news aggregator collecting important AI updates from Sarawak’s government, universities, businesses, and tech ecosystem.</p>
     </header>
 
-    <section class="story-list" aria-label="Latest intelligence signals">
+    {category_filter}
+
+    <section class="story-list" aria-label="Latest intelligence signals" data-story-list>
       {feed}
     </section>
   </main>
@@ -140,6 +176,7 @@ def render_index(items: list[dict]) -> str:
   <title>AI.Sarawak.News</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>" />
   <link rel="stylesheet" href="style.css" />
+  <script src="app.js" defer></script>
 </head>
 {render_compact_body(items)}
 </html>
@@ -155,6 +192,7 @@ def build() -> None:
     (DIST / "index.html").write_text(render_index(items), encoding="utf-8")
     compact_css = (ROOT / "site" / "style.css").read_text(encoding="utf-8")
     (DIST / "style.css").write_text(compact_css, encoding="utf-8")
+    (DIST / "app.js").write_text((ROOT / "site" / "app.js").read_text(encoding="utf-8"), encoding="utf-8")
     (DIST / "items.json").write_text(json.dumps(items, indent=2), encoding="utf-8")
     (DIST / "robots.txt").write_text("User-agent: *\nAllow: /\nSitemap: https://ai.sarawak.news/sitemap.xml\n", encoding="utf-8")
     (DIST / "sitemap.xml").write_text("""<?xml version='1.0' encoding='UTF-8'?>
