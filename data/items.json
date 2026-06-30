@@ -271,5 +271,100 @@
     "why_it_matters": "This is useful context for tracking whether Sarawak’s AI story is moving from announcements into implementation milestones.",
     "confidence": "high",
     "caveat": "Search result provides date and title; revisit source before direct quotation."
+  },
+  {
+    "id": "dayakdaily-germany-sovereign-ai-2026-06-25",
+    "date": "2026-06-25",
+    "source": "DayakDaily",
+    "url": "https://dayakdaily.com/sarawak-germany-explore-collaboration-on-sovereign-ai-hydrogen-green-data-centres-in-berlin",
+    "title": "Sarawak, Germany explore collaboration on sovereign AI, hydrogen, green data centres in Berlin",
+    "section": "Government & Policy",
+    "tags": [
+      "sovereign AI",
+      "Germany",
+      "green data centres",
+      "Agentic AI Hub",
+      "digital sovereignty"
+    ],
+    "summary": "The Berlin engagement positions sovereign AI, green data centres, and agentic systems as linked policy priorities for Sarawak.",
+    "why_it_matters": "This extends the Munich story into a broader EU-facing policy track, connecting AI governance, energy infrastructure, and international standards cooperation.",
+    "confidence": "high",
+    "caveat": "Publication date verified against source metadata."
+  },
+  {
+    "id": "sarawaktribune-bavaria-ai-semiconductor-2026-06-23",
+    "date": "2026-06-23",
+    "source": "Sarawak Tribune",
+    "url": "https://www.sarawaktribune.com/sarawak-explores-ai-semiconductor-collaboration-with-bavaria",
+    "title": "Sarawak explores AI, semiconductor collaboration with Bavaria",
+    "section": "Research & Universities",
+    "tags": [
+      "Bavaria",
+      "AI chips",
+      "semiconductors",
+      "Green AI",
+      "renewable energy"
+    ],
+    "summary": "Bavaria talks signal Sarawak’s attempt to connect renewable energy, AI chips, semiconductors, and green compute into one capability agenda.",
+    "why_it_matters": "This gives the brief a clearer hardware and semiconductor thread, showing Sarawak’s AI positioning is extending beyond software adoption and data centres.",
+    "confidence": "high",
+    "caveat": "Publication date verified against source metadata."
+  },
+  {
+    "id": "borneopost-uk-trade-envoy-ai-energy-2026-06-16",
+    "date": "2026-06-16",
+    "source": "The Borneo Post",
+    "url": "https://www.theborneopost.com/2026/06/16/uk-trade-envoy-impressed-by-sarawaks-ai-energy-and-economic-progress",
+    "title": "UK Trade Envoy impressed by Sarawak’s AI, energy and economic progress",
+    "section": "Government & Policy",
+    "tags": [
+      "United Kingdom",
+      "sovereign AI",
+      "energy",
+      "MoU",
+      "regional AI hub"
+    ],
+    "summary": "UK follow-up talks keep sovereign AI, energy, research, and academic links moving as an international partnership track.",
+    "why_it_matters": "This helps track whether UK engagements are turning into repeat cooperation rather than one-off diplomatic announcements.",
+    "confidence": "high",
+    "caveat": "Publication date verified against source metadata."
+  },
+  {
+    "id": "borneopost-tic-ai-nation-2030-2026-06-11",
+    "date": "2026-06-11",
+    "source": "The Borneo Post",
+    "url": "https://www.theborneopost.com/2026/06/11/sarawak-tic-key-to-malaysias-ai-nation-2030-ambition-says-digital-minister",
+    "title": "Sarawak TIC key to Malaysia’s AI Nation 2030 ambition, says Digital Minister",
+    "section": "Infrastructure",
+    "tags": [
+      "TIC Sarawak",
+      "AI Nation 2030",
+      "industrial cluster",
+      "digital twins",
+      "automation"
+    ],
+    "summary": "TIC Sarawak frames AI adoption as live industrial infrastructure, linking national capability with energy, talent, and automation.",
+    "why_it_matters": "This connects Sarawak’s AI story to Malaysia’s national AI agenda and gives Bintulu’s industrial transition a concrete technology role.",
+    "confidence": "high",
+    "caveat": "Publication date verified against source metadata."
+  },
+  {
+    "id": "sarawaktribune-keteq-ai-power-converter-2025-04-30",
+    "date": "2025-04-30",
+    "source": "Sarawak Tribune",
+    "url": "https://www.sarawaktribune.com/abang-jo-introduces-keteq-ai-to-the-world-sarawaks-very-own-artificial-intelligence-tool-transformational-leap-in-sarawaks-technological-landscape",
+    "title": "Abang Jo introduces KETEQ AI to the world — Sarawak’s very own artificial intelligence tool transformational leap in Sarawak’s technological landscape",
+    "section": "Government & Policy",
+    "tags": [
+      "KETEQ AI",
+      "SMD Semiconductor",
+      "Edge AI",
+      "power electronics",
+      "technology creator"
+    ],
+    "summary": "KETEQ AI signals Sarawak’s shift from technology adoption toward locally developed edge AI and semiconductor-linked products.",
+    "why_it_matters": "This is one of the strongest productisation examples in the feed: Sarawak is presenting a locally developed AI-enabled device, not only policy ambition.",
+    "confidence": "high",
+    "caveat": "Publication date verified against source metadata; visible article text references the Cardiff visit on Apr 29 local time."
   }
 ]

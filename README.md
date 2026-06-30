@@ -2,12 +2,12 @@
 
 Proof-of-concept for an AI-assisted regional intelligence brief tracking Sarawak-relevant AI, automation, digital economy, public-sector digital services, infrastructure, education, research, and workforce signals.
 
-## What this PoC proves
+## What this project proves
 
 - A small curated dataset can render into an Aligned-News-inspired briefing page: live line, sparse prose, large lead headline, short sections, and source links.
 - Source attribution, caveats, and tags are first-class fields.
 - A lightweight ingestion command can scan watched source pages, fetch candidate article pages, and produce candidate URLs for manual review.
-- The project can be hosted as a static site later without a backend.
+- The project is hosted as a dependency-free static site on GitHub Pages at `https://ai.sarawak.news/`.
 - Summarization/publication automation is intentionally deferred until source signal is validated.
 
 ## Run locally
@@ -28,6 +28,13 @@ The production homepage uses:
 - `scripts/build.py` (compact renderer)
 - `tests/test_build.py` (production SEO and layout checks)
 - generated homepage output under `dist/`
+
+## Live site
+
+- Production URL: https://ai.sarawak.news/
+- Hosting: GitHub Pages from `main`, generated files in `dist/`
+- Custom-domain SEO is generated in `scripts/build.py` (`canonical`, Open Graph URL, robots, sitemap)
+- Current public feed: 15 reviewed source-attributed stories with category filtering
 
 ## Candidate ingestion
 
@@ -84,4 +91,6 @@ python3 scripts/audit_summaries.py
 
 ## Current status
 
-PoC only. Candidate discovery exists; no live publishing, scraper-to-summary pipeline, or LLM automation yet.
+Live public static brief. Candidate discovery exists, but public publishing remains manually reviewed: raw candidates, scoring, confidence notes, and summary decisions stay internal until approved and moved into `data/items.json`.
+
+No scraper-to-summary pipeline, newsletter publishing, or external automation is live yet.
