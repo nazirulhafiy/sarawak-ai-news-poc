@@ -351,6 +351,7 @@ footer p { margin: 0; }
   }
   .story-meta-row { margin-bottom: 10px; }
   .story-source::after { display: none; }
+  .story-section { flex-basis: 100%; }
   .story-rank { width: 32px; height: 32px; }
 }
 
