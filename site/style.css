@@ -349,6 +349,8 @@ footer p { margin: 0; }
     gap: 12px;
     padding: 12px;
   }
+  .story-meta-row { margin-bottom: 10px; }
+  .story-source::after { display: none; }
   .story-rank { width: 32px; height: 32px; }
 }
 
